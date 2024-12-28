@@ -19,18 +19,25 @@
       configuration =
         { pkgs, ... }:
         {
-          environment.systemPackages = [
-            pkgs.neovim
-            pkgs.nixfmt-rfc-style
+          environment.systemPackages = with pkgs; [
+            neovim
+            neofetch
 
+            nixfmt-rfc-style
           ];
 
           homebrew = {
             enable = true;
             brews = [
+              #terminal
               "starship"
               "nushell"
+
+              #
               "rust"
+              "node"
+
+              #misc
               "apple-music-discord-rpc"
             ];
 
@@ -42,23 +49,22 @@
               "brave-browser"
               "linearmouse"
               "discord"
-              "spotify"
-
               "iina"
-
+              "raycast"
               "iterm2"
             ];
           };
 
           system.defaults = {
             NSGlobalDomain = {
-              InitialKeyRepeat = 5;
-              KeyRepeat = 0;
+              InitialKeyRepeat = 10;
+              KeyRepeat = 5;
               ApplePressAndHoldEnabled = false;
             };
             finder = {
               AppleShowAllExtensions = true;
               ShowHardDrivesOnDesktop = false;
+              ShowExternalHardDrivesOnDesktop = false;
             };
             dock = {
               persistent-apps = [
