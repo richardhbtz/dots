@@ -52,6 +52,11 @@
               "iina"
               "raycast"
               "iterm2"
+              "stats"
+              "rectangle"
+              "qbittorrent"
+              "appcleaner"
+              "the-unarchiver"
             ];
           };
 
@@ -68,10 +73,10 @@
             };
             dock = {
               persistent-apps = [
-                "/Applications/Brave Browser.app"
-                "/System/Applications/Music.app"
-                "/Applications/iTerm.app"
                 "/Applications/Discord.app"
+                "/System/Applications/Music.app"
+                "/Applications/Brave Browser.app"
+                "/Applications/iTerm.app"
               ];
               minimize-to-application = true;
               show-recents = false;
@@ -86,9 +91,6 @@
 
           # Necessary for using flakes on this system.
           nix.settings.experimental-features = "nix-command flakes";
-
-          # Enable alternative shell support in nix-darwin.
-          # programs.fish.enable = true;
 
           # Set Git commit hash for darwin-version.
           system.configurationRevision = self.rev or self.dirtyRev or null;
