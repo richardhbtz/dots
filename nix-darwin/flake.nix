@@ -1,5 +1,5 @@
 {
-  description = "Example nix-darwin system flake";
+  description = "Richards-iMac-Pro nix-darwin system flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -22,6 +22,7 @@
           environment.systemPackages = with pkgs; [
             neovim
             neofetch
+            btop
 
             nixfmt-rfc-style
           ];
@@ -39,10 +40,12 @@
 
               #misc
               "apple-music-discord-rpc"
+              "bun"
             ];
 
             taps = [
               "nextfire/tap"
+              "oven-sh/bun"
             ];
 
             casks = [
@@ -85,8 +88,8 @@
             };
           };
 
-          fonts.packages = [
-            pkgs.nerd-fonts.jetbrains-mono
+          fonts.packages = with pkgs; [
+            nerd-fonts.jetbrains-mono
           ];
 
           # Necessary for using flakes on this system.
